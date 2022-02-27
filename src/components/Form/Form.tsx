@@ -207,11 +207,14 @@ const Form = ({ setResult }: Props) => {
         </div>
       </div>
       <div className="form__block">
-        <label className="form__block__label">已退伍學號</label>
+        <label className="form__block__label" htmlFor="dischargedNumberInput">
+          已退伍學號
+        </label>
         <div className="form__block__inputs">
           <input
             className="form__block__inputs__input"
             placeholder="每個學號以半形空格區隔"
+            id="dischargedNumberInput"
             value={dischargedNumberInput}
             onChange={(e) => setDischargedNumberInput(e.target.value)}
           />
