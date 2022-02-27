@@ -74,9 +74,14 @@ const Form = ({ setResult }: Props) => {
   }
 
   useEffect(() => {
+    setMaxNumber(Number(localStorage.getItem('maxNumber')) || DEFAULT_MAX_NUMBER)
     setUserNumber(Number(localStorage.getItem('userNumber')))
     setDischargedNumberInput(localStorage.getItem('dischargedNumberInput') || '')
   }, [])
+
+  useEffect(() => {
+    localStorage.setItem('maxNumber', String(maxNumber))
+  }, [maxNumber])
 
   useEffect(() => {
     localStorage.setItem('userNumber', String(userNumber))
