@@ -1,0 +1,142 @@
+@import './mixins';
+@import './variable';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', 'Noto Sans TC', sans-serif;
+}
+
+html {
+  background-color: $background-color-html;
+  color: $font-color;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.container {
+  display: flex;
+  background-color: $background-color-container;
+  max-width: 500px;
+  min-width: 350px;
+  margin: 100px auto;
+  padding: 0 20px;
+  border-radius: 10px;
+  box-shadow: 10px 12px 48px 32px $background-color-html;
+  flex-direction: column;
+
+  > * {
+    padding: 20px 0;
+
+    &:first-child {
+      padding-bottom: 0;
+    }
+  }
+}
+
+.title {
+  align-self: center;
+}
+
+.form {
+  display: flex;
+  min-width: 400px;
+  flex-direction: column;
+  border-bottom: 1px solid #fff;
+
+  @include respond(s) {
+    min-width: 300px;
+  }
+
+  &__block {
+    display: flex;
+    align-items: center;
+
+    @include respond(m) {
+      // flex-direction: column;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
+
+    &__label {
+      @include respond(m) {
+        margin-right: 8px;
+      }
+
+      @include respond(s) {
+        margin-bottom: 8px;
+      }
+    }
+
+    &__inputs {
+      &__input {
+        margin: 0 8px;
+        padding: 3px 5px;
+        font-size: 18px;
+
+        &::placeholder {
+          font-size: 0.8em;
+        }
+
+        @include respond(m) {
+          margin-bottom: 8px;
+
+          &:first-child {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+  }
+
+  &__submit {
+    display: flex;
+    align-self: flex-end;
+    padding: 8px 20px;
+    border: 2px solid $font-color;
+    border-radius: 5px;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+
+    @include respond(m) {
+      padding: 8px 50px;
+      align-self: center;
+    }
+
+    &:hover {
+      transform: translateY(-3px) scale(1.1);
+    }
+
+    &:active {
+      transform: translateY(-1px) scale(1.05);
+    }
+  }
+}
+
+.result {
+  white-space: pre-wrap;
+}
+
+.github {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 45px;
+  opacity: 0.75;
+  transition: all 0.1s;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  img {
+    width: 100%;
+  }
+}
