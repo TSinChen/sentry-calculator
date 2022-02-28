@@ -8,6 +8,7 @@ const MONTH_OPTIONS = Array.from({ length: 12 }, (_, index) => index)
 const TODAY = dayjs().hour(0).second(0)
 const DEFAULT_MAX_NUMBER = 136
 const DEFAULT_PER_DAY = [4, 8]
+const DEFAULT_USER_NUMBER = 1
 
 type Props = {
   setResult: React.Dispatch<React.SetStateAction<string>>
@@ -20,7 +21,7 @@ const Form = ({ setResult }: Props) => {
   const [date, setDate] = useState(TODAY.date())
   const [startFirstNumber, setStartFirstNumber] = useState(1)
   const [perDay, setPerDay] = useState(DEFAULT_PER_DAY[1])
-  const [userNumber, setUserNumber] = useState(1)
+  const [userNumber, setUserNumber] = useState(DEFAULT_USER_NUMBER)
   const [dischargedNumberInput, setDischargedNumberInput] = useState('')
   const dischargedNumber = useMemo(
     () =>
@@ -75,7 +76,7 @@ const Form = ({ setResult }: Props) => {
 
   useEffect(() => {
     setMaxNumber(Number(localStorage.getItem('maxNumber')) || DEFAULT_MAX_NUMBER)
-    setUserNumber(Number(localStorage.getItem('userNumber')))
+    setUserNumber(Number(localStorage.getItem('userNumber')) || DEFAULT_USER_NUMBER)
     setDischargedNumberInput(localStorage.getItem('dischargedNumberInput') || '')
   }, [])
 
